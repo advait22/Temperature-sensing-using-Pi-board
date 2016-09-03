@@ -16,7 +16,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ConfigureServer_Process" />
-        <activity android:name=".Sever_Configuration"></activity>
+        <activity android:name=".Server_Configuration"></activity>
     </application>
 
 </manifest>
