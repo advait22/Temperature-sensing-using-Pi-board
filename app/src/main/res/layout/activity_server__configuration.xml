@@ -23,6 +23,7 @@
         android:layout_below="@id/EnterIPAddress"
         android:id="@+id/Proceed"
         android:layout_marginTop="20dp"
-        android:layout_marginLeft="140dp"/>
+        android:layout_marginLeft="135dp"
+        android:layout_centerInParent="true"/>
 
 </RelativeLayout>
