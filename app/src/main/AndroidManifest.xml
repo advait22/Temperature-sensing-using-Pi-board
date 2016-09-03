@@ -15,7 +15,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ConfigureServer_Process"></activity>
+        <activity android:name=".ConfigureServer_Process" />
+        <activity android:name=".Sever_Configuration"></activity>
     </application>
 
 </manifest>
