@@ -42,7 +42,20 @@
         android:layout_marginTop="50dp"
         android:layout_marginLeft="140dp"
         android:layout_centerInParent="true"
-        android:text="Login"/>
+        android:text="Login"
+        android:id="@+id/Login_Button"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@id/Login_Button"
+        android:layout_centerInParent="true"
+        android:layout_below="@id/Login_Button"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="-40dp"
+        android:text="Forgot Password"
+        android:id="@+id/Forgot_Password"
+        />
 
 </RelativeLayout>
 
