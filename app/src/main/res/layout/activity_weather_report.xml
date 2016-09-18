@@ -8,11 +8,21 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.advait.temptracker.WeatherReport">
-<ImageView
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Todays Tempature"
+        android:textSize="40dp"
+        android:id="@+id/CurrentTemperature"/>
+
+    <ImageView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:src="@drawable/Sunny"
-    android:id="@+id/Sunny"/>
+    android:id="@+id/Sunny"
+    android:layout_below="@id/CurrentTemperature"
+    android:layout_marginTop="20dp"/>
 
    <ImageView
        android:layout_width="wrap_content"
