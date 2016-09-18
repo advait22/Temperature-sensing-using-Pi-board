@@ -16,26 +16,24 @@
         android:textSize="40dp"
         android:id="@+id/CurrentTemperature"/>
 
-    <ImageView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:src="@drawable/Sunny"
-    android:id="@+id/Sunny"
-    android:layout_below="@id/CurrentTemperature"
-    android:layout_marginTop="20dp"/>
-
-   <ImageView
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:src="@drawable/cloudy"
-       android:id="@+id/Cloudy"
-       android:layout_below="@id/Sunny"
-       android:layout_marginTop="20dp"/>
-    <ImageView
+    <TextView
+        android:id="@+id/alertMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/umbrella"
-        android:id="@+id/Rainy"
+        android:layout_centerInParent="true"
         android:layout_marginTop="20dp"
-        android:layout_below="@id/Cloudy"/>
+        android:textSize="50sp"
+        android:textStyle="bold" />
+
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_margin="20dp"
+        android:onClick="generateTemperatureBroadcast"
+        android:text="Generate Temperature" />
+
 </RelativeLayout>
