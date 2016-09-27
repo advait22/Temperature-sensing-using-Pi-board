@@ -2,22 +2,26 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.advait.temptracker">
 
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher_icon"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Login_Screen">
+
+        <activity android:name=".ConfigureServer_Process" />
+        <!--<activity android:name=".ServerConfigurationActivity" />-->
+        <activity android:name=".ServerConfigurationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ConfigureServer_Process" />
-        <activity android:name=".Server_Configuration" />
-        <activity android:name=".WeatherReport"></activity>
+        <activity android:name=".SocketDemoActivity" />
     </application>
 
 </manifest>
