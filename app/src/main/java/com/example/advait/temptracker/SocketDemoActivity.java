@@ -1,9 +1,8 @@
 package com.example.advait.temptracker;
 
-import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -12,15 +11,28 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class SocketDemoActivity extends AppCompatActivity {
 
     private static final String TAG = "SocketDemoActivity";
-    private static final String TAG1 ="HI" ;
+    private static final String TAG1 = "HI";
+    private static final long START_AFTER_TIME = 1 * 1000;
+    private static final long FREQUENCY = 3 * 1000;
 
     private TextView temperature;
-    private String HOST= "192.168.1.9";
-    private final int PORT = 1295;
+    private String HOST = "192.168.0.118";
+    private final int PORT = 1296;
+
+    private Timer timer;
+
+    private TimerTask socketTimerTask = new TimerTask() {
+        @Override
+        public void run() {
+            connectToSocket(HOST, PORT);
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,14 +41,15 @@ public class SocketDemoActivity extends AppCompatActivity {
         temperature = (TextView) findViewById(R.id.temperature);
         Bundle bundle = getIntent().getExtras();
         //Intent intent = getIntent();
-        if(bundle!=null)
-        {
-            Log.d(TAG, "HOST " + HOST+"     PORT "+PORT);
-            HOST =bundle.getString("IPAddress","");
+        if (bundle != null) {
+            Log.d(TAG, "HOST " + HOST + "     PORT " + PORT);
+            HOST = bundle.getString("IPAddress", "");
 
-            connectToSocket(HOST, PORT);
+            //connectToSocket(HOST, PORT);
+            timer = new Timer();
+            timer.schedule(socketTimerTask, START_AFTER_TIME, FREQUENCY);
 
-        }else{
+        } else {
 
             Toast.makeText(SocketDemoActivity.this, "BAD", Toast.LENGTH_SHORT).show();
         }
@@ -45,8 +58,16 @@ public class SocketDemoActivity extends AppCompatActivity {
     private void connectToSocket(String host, int port) {
         Log.d(TAG1, "connectToSocket:--------- ");
         SocketTask socketTask = new SocketTask(host, port);
+        Log.d(TAG1, "HOST " + HOST + "     PORT " + PORT);
 
         socketTask.execute();
+    }
+
+    @Override
+    protected void onDestroy() {
+        timer.cancel();
+        timer = null;
+        super.onDestroy();
     }
 
     class SocketTask extends AsyncTask<Void, Void, String> {
@@ -63,15 +84,15 @@ public class SocketDemoActivity extends AppCompatActivity {
         protected String doInBackground(Void... params) {
             String message = "";
             try {
-                Log.d(TAG, "HOST " + HOST+"     PORT "+PORT);
+                Log.d(TAG, "HOST " + HOST + "     PORT " + PORT);
                 Socket clientSocket = new Socket(host, port);
 
                 try {
                     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
                     message = bufferedReader.readLine();
-                    Log.d(TAG1, "Message=" + message);
+                    Log.d(TAG, "Message=" + message);
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    Log.e(TAG, "doInBackground: ", e);
                 }
             } catch (IOException e) {
                 Log.e(TAG, "doInBackground: ", e);
