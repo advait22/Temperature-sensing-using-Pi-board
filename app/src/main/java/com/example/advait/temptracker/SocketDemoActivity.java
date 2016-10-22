@@ -22,8 +22,8 @@ public class SocketDemoActivity extends AppCompatActivity {
     private static final long FREQUENCY = 3 * 1000;
 
     private TextView temperature;
-    private String HOST = "192.168.0.118";
-    private final int PORT = 1296;
+    private String HOST = "192.168.0.120";
+    private final int PORT = 1297;
 
     private Timer timer;
 
@@ -105,6 +105,7 @@ public class SocketDemoActivity extends AppCompatActivity {
             // display message on screen
             Log.d(TAG1, "onPostExecute: ----------");
             temperature.setText(aVoid);
+
         }
     }
 }
