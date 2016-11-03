@@ -1,12 +1,12 @@
 package com.example.advait.temptracker;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.Toast;
 
 public class ServerConfigurationActivity extends AppCompatActivity {
     private static final String TAG = "LOG";
@@ -30,10 +30,15 @@ public class ServerConfigurationActivity extends AppCompatActivity {
         //Bundle bundle = new Bundle();
         //bundle.putString("CurrentTemperature",IPAddress1);
         IPAddress = editText.getText().toString();
-        Intent intent = new Intent(getApplicationContext(), SocketDemoActivity.class);
-        intent.putExtra("IPAddress", IPAddress);
-        Log.d(TAG, "onCreate: " + IPAddress);
-        startActivity(intent);
-
+        Log.d(TAG, "TemperatureDisplay: "+IPAddress);
+        if(IPAddress.equals("")){
+                Toast.makeText(ServerConfigurationActivity.this, "Please enter IP address", Toast.LENGTH_SHORT).show();
+        }
+        else {
+                Intent intent = new Intent(getApplicationContext(), SocketDemoActivity.class);
+                intent.putExtra("IPAddress", IPAddress);
+                Log.d(TAG, "onCreate: " + IPAddress);
+                startActivity(intent);
+            }
     }
 }

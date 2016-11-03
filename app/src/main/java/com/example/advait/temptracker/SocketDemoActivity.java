@@ -22,7 +22,7 @@ public class SocketDemoActivity extends AppCompatActivity {
     private static final long FREQUENCY = 3 * 1000;
 
     private TextView temperature;
-    private String HOST = "192.168.0.120";
+    private String HOST = "";
     private final int PORT = 1297;
 
     private Timer timer;
@@ -91,6 +91,7 @@ public class SocketDemoActivity extends AppCompatActivity {
                     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
                     message = bufferedReader.readLine();
                     Log.d(TAG, "Message=" + message);
+
                 } catch (IOException e) {
                     Log.e(TAG, "doInBackground: ", e);
                 }
